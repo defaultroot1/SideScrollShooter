@@ -4,12 +4,12 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SideScrollShooter
 {
-    public class Game1 : Game
+    public class SideScrollShooter : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public Game1()
+        public SideScrollShooter()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";

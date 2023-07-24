@@ -1,3 +1,3 @@
 ﻿
-using var game = new SideScrollShooter.Game1();
+using var game = new SideScrollShooter.SideScrollShooter();
 game.Run();
