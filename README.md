@@ -1,2 +1,2 @@
 # SideScrollShooter
-<p>A side-scroll shooter for learning C#/MonoGame, based loosely on Gradius</p>
+<p>A horizontal shooter based loosely on Gradius, for learning C#/MonoGame.</p>
