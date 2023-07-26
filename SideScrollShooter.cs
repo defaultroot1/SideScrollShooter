@@ -17,9 +17,9 @@ namespace SideScrollShooter
 
         protected override void Initialize()
         {
-            // TBC final resolution
-            _graphics.PreferredBackBufferWidth = 640 * 2;
-            _graphics.PreferredBackBufferHeight = 480 * 2;
+            // Set screen resolution, original (320x240) * 4. All sprites scaled 400%
+            _graphics.PreferredBackBufferWidth = 1280;
+            _graphics.PreferredBackBufferHeight = 960;
             _graphics.ApplyChanges();
 
             Globals.ContentManger = Content;

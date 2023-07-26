@@ -15,7 +15,7 @@ namespace SideScrollShooter
 
         public static void UpdateElapsedGameTime(GameTime gameTime)
         {
-            ElapsedGameTimeSeconds += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            ElapsedGameTimeSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
 }

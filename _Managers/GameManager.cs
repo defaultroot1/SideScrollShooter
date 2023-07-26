@@ -1,21 +1,24 @@
-﻿namespace SideScrollShooter._Managers
+﻿using SideScrollShooter._Models;
+
+namespace SideScrollShooter._Managers
 {
     internal class GameManager
     {
-        // Declarations here
+        private PlayerShip _playerShip;
         public void Init() 
         { 
-            // Init
+            _playerShip = new PlayerShip();
         }
 
         public void Update()
         {
-            // Update
+            InputManager.Update();
+            _playerShip.Update();
         }
 
         public void Draw()
         {
-            // Draw
+            _playerShip.Draw();
         }
 
     }
