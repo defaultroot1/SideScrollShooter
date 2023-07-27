@@ -11,11 +11,13 @@ namespace SideScrollShooter._Models
     {
         private Vector2 _position = new Vector2(100, 100);
         private float _speed = 600f;
-        private Texture2D _texture;
+        private AnimationManager _anims = new AnimationManager();
 
         public PlayerShip()
         {
-            _texture = Globals.ContentManger.Load<Texture2D>("Sprites/playerShipSprite");
+            var shipTexture = Globals.ContentManger.Load<Texture2D>("Sprites/playerShipSprite");
+
+            _anims.AddAnimation(new Vector2(1, 0), new Animation(shipTexture, 5, 1, 0.1f, 1));
         }
 
         public void Update()
@@ -24,11 +26,13 @@ namespace SideScrollShooter._Models
             {
                 _position += Vector2.Normalize(InputManager.Direction) * _speed * Globals.ElapsedGameTimeSeconds;
             }
+
+            _anims.Update(InputManager.Direction);
         }
 
         public void Draw()
         {
-            Globals.SpriteBatch.Draw(_texture, _position, Color.White);
+            _anims.Draw(_position);
         }
     }
 }

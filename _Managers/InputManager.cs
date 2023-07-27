@@ -16,12 +16,13 @@ namespace SideScrollShooter._Managers
             Direction = Vector2.Zero; // Reset direction to zero each frame
             KeyboardState keyboardState = Keyboard.GetState();
 
-
-            if (keyboardState.IsKeyDown(Keys.A)) Direction.X--;
-            if (keyboardState.IsKeyDown(Keys.D)) Direction.X++;
-            if (keyboardState.IsKeyDown(Keys.W)) Direction.Y--;
-            if (keyboardState.IsKeyDown(Keys.S)) Direction.Y++;
-            
+            if (keyboardState.GetPressedKeyCount() > 0)
+            {
+                if (keyboardState.IsKeyDown(Keys.A)) Direction.X--;
+                if (keyboardState.IsKeyDown(Keys.D)) Direction.X++;
+                if (keyboardState.IsKeyDown(Keys.W)) Direction.Y--;
+                if (keyboardState.IsKeyDown(Keys.S)) Direction.Y++;
+            }
         }
     }
 }
