@@ -15,9 +15,17 @@ namespace SideScrollShooter._Models
 
         public PlayerShip()
         {
-            var shipTexture = Globals.ContentManger.Load<Texture2D>("Sprites/playerShipSprite");
+            var shipTexture = Globals.ContentManger.Load<Texture2D>("Sprites/playerShipSprite3x2");
 
-            _anims.AddAnimation(new Vector2(1, 0), new Animation(shipTexture, 5, 1, 0.1f, 1));
+            _anims.AddAnimation(new Vector2(0, 0), new Animation(shipTexture, 2, 3, 0.1f, 1, true)); // Idle
+            _anims.AddAnimation(new Vector2(1, 0), new Animation(shipTexture, 2, 3, 0.1f, 1, true)); // Right
+            _anims.AddAnimation(new Vector2(-1, 0), new Animation(shipTexture, 2, 3, 0.1f, 1, true)); // Left
+            _anims.AddAnimation(new Vector2(0, -1), new Animation(shipTexture, 2, 3, 0.1f, 2, false)); // Up
+            _anims.AddAnimation(new Vector2(0, 1), new Animation(shipTexture, 2, 3, 0.1f, 3, false)); // Down
+            _anims.AddAnimation(new Vector2(-1, -1), new Animation(shipTexture, 2, 3, 0.1f, 2, false)); // Up Left
+            _anims.AddAnimation(new Vector2(1, -1), new Animation(shipTexture, 2, 3, 0.1f, 2, false)); // Up Right
+            _anims.AddAnimation(new Vector2(-1, 1), new Animation(shipTexture, 2, 3, 0.1f, 3, false)); // Down Left
+            _anims.AddAnimation(new Vector2(1, 1), new Animation(shipTexture, 2, 3, 0.1f, 3, false)); // Down Right
         }
 
         public void Update()

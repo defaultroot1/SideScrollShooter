@@ -5,11 +5,15 @@ namespace SideScrollShooter._Managers
     internal class GameManager
     {
         private PlayerShip _playerShip;
-        private PowerUp _powerUp;
+        private PowerUpOrange _powerUp;
+        private EnemySpinner _enemySpinner;
+
         public void Init() 
         { 
             _playerShip = new PlayerShip();
-            _powerUp = new PowerUp(new Vector2(200, 200), PowerUpColour.Orange);
+            _powerUp = new PowerUpOrange(new Vector2(200, 200));
+            _enemySpinner = new EnemySpinner();
+
         }
 
         public void Update()
@@ -17,12 +21,16 @@ namespace SideScrollShooter._Managers
             InputManager.Update();
             _playerShip.Update();
             _powerUp.Update();
+            _enemySpinner.Update(); 
+
         }
 
         public void Draw()
         {
             _playerShip.Draw();
             _powerUp.Draw();
+            _enemySpinner.Draw();
+
         }
 
     }

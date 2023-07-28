@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace SideScrollShooter._Models
 {
@@ -15,8 +16,9 @@ namespace SideScrollShooter._Models
         private float _frameTime;
         private float _frameTimeLeft;
         private bool _animationActive = true;
+        private bool _animationLooped = true;
 
-        public Animation(Texture2D texture, int framesX, int framesY, float frameTime, int rows=1)
+        public Animation(Texture2D texture, int framesX, int framesY, float frameTime, int rows=1, bool loop=true)
         {
             _texture = texture;
             _frameTime = frameTime;
@@ -24,6 +26,7 @@ namespace SideScrollShooter._Models
             _frames = framesX;
             var frameWidth = _texture.Width / framesX;
             var frameHeight = _texture.Height / framesY;
+            _animationLooped = loop;
 
             for (int i = 0; i < _frames; i++) 
             { 
@@ -50,6 +53,7 @@ namespace SideScrollShooter._Models
         public void Update()
         {
             if (!_animationActive) return;
+            if (_frame == _frames - 1 && _animationLooped == false) return; // At last frame, don't loop, return to stay on last frame
 
             _frameTimeLeft -= Globals.ElapsedGameTimeSeconds;
 
