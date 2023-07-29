@@ -9,27 +9,47 @@ namespace SideScrollShooter._Managers
 {
     public class ProjectileManager
     {
-        public static List<Projectile> projectiles { get; set; } = new();
+        public static List<Projectile> playerProjectiles { get; set; } = new();
+        public static List<Projectile> enemyProjectiles { get; set; } = new();
 
-        public static void AddProjectile(Projectile projectile)
+        public static void AddPlayerProjectile(Projectile projectile)
         {
-            projectiles.Add(projectile);
+            playerProjectiles.Add(projectile);
+        }
+
+        public static void AddEnemyProjectile(Projectile projectile)
+        {
+            enemyProjectiles.Add(projectile);
         }
 
         public static void Update()
         {
-            foreach (Projectile projectile in projectiles)
+            foreach (Projectile projectile in playerProjectiles)
             {
                 projectile.Update();
             }
+
+            foreach (Projectile projectile in enemyProjectiles)
+            {
+                projectile.Update();
+            }
+
+
+            playerProjectiles.RemoveAll((p) => p.lifespan <= 0);
+            enemyProjectiles.RemoveAll((p) => p.lifespan <= 0);
         }
 
         public static void Draw()
         {
-            foreach (Projectile projectile in projectiles)
+            foreach (Projectile projectile in playerProjectiles)
             {
                 projectile.Draw();
             }
+            foreach (Projectile projectile in enemyProjectiles)
+            {
+                projectile.Draw();
+            }
+
         }
     }
 }

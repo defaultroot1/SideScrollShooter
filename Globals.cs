@@ -12,6 +12,8 @@ namespace SideScrollShooter
         public static ContentManager ContentManger { get; set; }
         public static SpriteBatch SpriteBatch { get; set; }
         public static float ElapsedGameTimeSeconds { get; set; }
+        public static int ScreenWidth;
+        public static int ScreenHeight;
 
         public static void UpdateElapsedGameTime(GameTime gameTime)
         {

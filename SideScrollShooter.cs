@@ -23,6 +23,8 @@ namespace SideScrollShooter
             _graphics.ApplyChanges();
 
             Globals.ContentManger = Content;
+            Globals.ScreenWidth = _graphics.PreferredBackBufferWidth;
+            Globals.ScreenHeight = _graphics.PreferredBackBufferHeight;
 
             _gameManager = new GameManager();
             _gameManager.Init();

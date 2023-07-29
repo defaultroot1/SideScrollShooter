@@ -39,7 +39,7 @@ namespace SideScrollShooter._Models
             Width = Texture.Width / 2;
             Height = Texture.Height / 3;
 
-            Weapon = BeamGun;
+            Weapon = LaserGun;
 
         }
 

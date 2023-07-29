@@ -12,8 +12,9 @@ namespace SideScrollShooter._Models._Base
         protected Animation _anim;
         protected int _frames;
         protected float _animationSpeed;
-        protected int Width;
-        protected int Height;
+        public int Width { get; protected set; }    
+        public int Height { get; protected set; }
+        public int HP = 1;
 
         public AnimatedSprite(Texture2D texture, Vector2 position, int frames, float animationSpeed = 0.1f) : base(texture, position)
         {

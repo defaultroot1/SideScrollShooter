@@ -19,7 +19,7 @@ namespace SideScrollShooter._Models.Weapons
 
         protected override void CreateProjectile(PlayerShip playerShip)
         {
-            ProjectileManager.AddProjectile(new Projectile(Globals.ContentManger.Load<Texture2D>("Sprites/beam"),
+            ProjectileManager.AddPlayerProjectile(new Projectile(Globals.ContentManger.Load<Texture2D>("Sprites/beam"),
                 new Vector2(playerShip.Position.X + playerShip.Width / 2, playerShip.Position.Y + playerShip.Height / 2), 
                 playerShip.DirectionFacing, 1000f, 1));
         }

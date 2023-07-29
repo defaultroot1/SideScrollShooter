@@ -14,8 +14,7 @@ namespace SideScrollShooter._Managers
         public void Init() 
         { 
             _playerShip = new PlayerShip();
-            _enemySpinner = new EnemySpinner(Globals.ContentManger.Load<Texture2D>("Sprites/EnemySpinner"),
-                new Vector2(500, 500), 3);
+            EnemyManager.SpawnEnemySpinner(200);
 
         }
 
@@ -24,9 +23,9 @@ namespace SideScrollShooter._Managers
             InputManager.Update(_playerShip);
             ProjectileManager.Update();
             _playerShip.Update();
-            _enemySpinner.Update(); 
             PowerUpManager.Update();
-            
+            EnemyManager.Update();
+            CollisionManager.Update();
 
 
         }
@@ -34,10 +33,10 @@ namespace SideScrollShooter._Managers
         public void Draw()
         {
             
-            _enemySpinner.Draw();
             ProjectileManager.Draw();
             _playerShip.Draw();
             PowerUpManager.Draw();
+            EnemyManager.Draw();
 
         }
 

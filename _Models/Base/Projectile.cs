@@ -11,6 +11,7 @@ namespace SideScrollShooter._Models._Base
         public Vector2 Direction { get; set; }
         public float Speed { get; set; }
         public int Damage { get; set; }
+        public float lifespan = 5f;
 
         public Projectile(Texture2D texture, Vector2 position, Vector2 direction, float speed, int damage) : base(texture, position)
         {
@@ -24,6 +25,12 @@ namespace SideScrollShooter._Models._Base
         public void Update()
         {
             Position += Direction * Speed * Globals.ElapsedGameTimeSeconds;
+            lifespan -= Globals.ElapsedGameTimeSeconds;
+        }
+
+        public void Destroy()
+        {
+            lifespan = 0;
         }
 
     }
