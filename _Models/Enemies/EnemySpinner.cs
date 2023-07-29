@@ -1,11 +1,11 @@
-﻿using SideScrollShooter._Base;
+﻿using SideScrollShooter._Models._Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SideScrollShooter._Models
+namespace SideScrollShooter._Models.Enemies
 {
     internal class EnemySpinner : AnimatedSprite
     {

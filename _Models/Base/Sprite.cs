@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SideScrollShooter._Base
+namespace SideScrollShooter._Models._Base
 {
-    internal class Sprite
+    public class Sprite
     {
         protected Texture2D _texture;
         public Vector2 Position { get; set; }

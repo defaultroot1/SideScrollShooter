@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SideScrollShooter._Base
+namespace SideScrollShooter._Models._Base
 {
     internal class AnimatedSprite : Sprite
     {
@@ -13,7 +13,7 @@ namespace SideScrollShooter._Base
         protected int _frames;
         protected float _animationSpeed;
 
-        public AnimatedSprite(Texture2D texture, Vector2 position, int frames, float animationSpeed=0.1f) : base(texture, position) 
+        public AnimatedSprite(Texture2D texture, Vector2 position, int frames, float animationSpeed = 0.1f) : base(texture, position)
         {
             _frames = frames;
             _animationSpeed = animationSpeed;

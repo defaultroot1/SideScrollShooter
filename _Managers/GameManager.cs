@@ -1,4 +1,6 @@
 ﻿using SideScrollShooter._Models;
+using SideScrollShooter._Models.Enemies;
+using SideScrollShooter._Models.PowerUps;
 
 namespace SideScrollShooter._Managers
 {
@@ -23,20 +25,25 @@ namespace SideScrollShooter._Managers
 
         public void Update()
         {
-            InputManager.Update();
+            InputManager.Update(_playerShip);
+            ProjectileManager.Update();
             _playerShip.Update();
             _enemySpinner.Update(); 
             _powerUpBlue.Update();
             _powerUpOrange.Update();
+            
+
 
         }
 
         public void Draw()
         {
-            _playerShip.Draw();
+            
             _enemySpinner.Draw();
             _powerUpBlue.Draw();
             _powerUpOrange.Draw();
+            ProjectileManager.Draw();
+            _playerShip.Draw();
 
         }
 
