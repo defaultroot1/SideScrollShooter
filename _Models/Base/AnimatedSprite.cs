@@ -7,17 +7,26 @@ using System.Threading.Tasks;
 
 namespace SideScrollShooter._Models._Base
 {
-    internal class AnimatedSprite : Sprite
+    public class AnimatedSprite : Sprite
     {
         protected Animation _anim;
         protected int _frames;
         protected float _animationSpeed;
+        protected int Width;
+        protected int Height;
 
         public AnimatedSprite(Texture2D texture, Vector2 position, int frames, float animationSpeed = 0.1f) : base(texture, position)
         {
             _frames = frames;
             _animationSpeed = animationSpeed;
             _anim = new Animation(texture, _frames, 1, _animationSpeed);
+            Width = texture.Width / frames;
+            Height = texture.Height;
+        }
+
+        public override Rectangle GetBounds()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
         }
 
         public virtual void Update()

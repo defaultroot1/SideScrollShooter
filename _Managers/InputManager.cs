@@ -28,6 +28,8 @@ namespace SideScrollShooter._Managers
 
                 if (keyboardState.IsKeyDown(Keys.D1)) playerShip.ActivateLaserGun();
                 if (keyboardState.IsKeyDown(Keys.D2)) playerShip.ActivateBeamGun();
+                if (keyboardState.IsKeyDown(Keys.P) && _lastKeyboardState.IsKeyUp(Keys.P)) PowerUpManager.AddOrangePowerUp(playerShip.Position);
+                if (keyboardState.IsKeyDown(Keys.L) && _lastKeyboardState.IsKeyUp(Keys.L)) PowerUpManager.AddBluePowerUp(playerShip.Position);
 
                 SpacePressed = keyboardState.IsKeyDown(Keys.Space) && _lastKeyboardState.IsKeyUp(Keys.Space);
             }

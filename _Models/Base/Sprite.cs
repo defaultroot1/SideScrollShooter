@@ -21,5 +21,10 @@ namespace SideScrollShooter._Models._Base
         {
             Globals.SpriteBatch.Draw(_texture, Position, Color.White);
         }
+
+        public virtual Rectangle GetBounds()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, _texture.Width, _texture.Height);
+        }
     }
 }
