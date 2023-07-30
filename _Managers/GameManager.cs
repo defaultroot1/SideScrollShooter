@@ -1,6 +1,7 @@
 ﻿using SideScrollShooter._Models;
 using SideScrollShooter._Models.Enemies;
 using SideScrollShooter._Models.PowerUps;
+using System.Diagnostics;
 
 namespace SideScrollShooter._Managers
 {
@@ -14,7 +15,8 @@ namespace SideScrollShooter._Managers
         public void Init() 
         { 
             _playerShip = new PlayerShip();
-            EnemyManager.SpawnEnemySpinner(200);
+            EnemyManager.SpawnEnemySpinner(200, 5);
+            EnemyManager.SpawnEnemySpinner(800, 8);
 
         }
 
@@ -25,8 +27,9 @@ namespace SideScrollShooter._Managers
             _playerShip.Update();
             PowerUpManager.Update();
             EnemyManager.Update();
-            CollisionManager.Update();
+            CollisionManager.Update(_playerShip);
 
+            Debug.WriteLine(_playerShip.OrangePowerUpsCollected);
 
         }
 

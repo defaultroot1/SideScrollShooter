@@ -12,62 +12,75 @@ namespace SideScrollShooter._Models.Enemies
         private float _speed = 200;
         public float LifeTime { get; set; } = 0;
         public Vector2 Direction = new Vector2(-1, 0);
-        private int moveStage = 0;
-        public EnemySpinner(Texture2D texture, Vector2 position, int frames) : base(texture, position, frames) 
+        public Vector2 Destination = new Vector2(100, 200);
+        private Vector2 _startingPosition = new Vector2(0, 0);
+        private List<Vector2> _waypoints = new List<Vector2>();
+        private int _currentWaypointIndex = 0;
+
+        public EnemySpinner(Texture2D texture, Vector2 position, Vector2 startingPosition, int frames) : base(texture, position, frames) 
         {
+            _startingPosition = startingPosition;
+            InitWaypoints();
+            
         }
 
         public override void Update()
         {
             base.Update();
 
-            if (moveStage == 0)
+            if (_currentWaypointIndex < _waypoints.Count)
             {
-                // Stage 0: Move from right to left
+                Vector2 targetWaypoint = _waypoints[_currentWaypointIndex];
 
-                if (Position.X <= Globals.ScreenWidth - 500)
-                {
-                    // Switch to Stage 1 when close to the left edge
-                    Direction = new Vector2(1, 1);
-                    moveStage = 1;
-                }
-            }
-            else if (moveStage == 1)
-            {
-                // Stage 1: Move diagonally right
+                // Calculate the direction vector towards the target waypoint
+                Vector2 direction = Vector2.Normalize(targetWaypoint - Position);
 
-                if (Position.Y >= Globals.ScreenHeight - 600)
-                {
-                    // Switch to Stage 2 when close to the bottom edge
-                    Direction = new Vector2(1, 0);
-                    moveStage = 2;
-                }
-            }
-            else if (moveStage == 2)
-            {
-                // Stage 2: Move from left to right
+                // Move towards the waypoint
+                Position += direction * _speed * Globals.ElapsedGameTimeSeconds;
 
-                if (Position.X >= Globals.ScreenWidth)
+                // Check if the enemy has reached the waypoint
+                if (Vector2.Distance(Position, targetWaypoint) < _speed * Globals.ElapsedGameTimeSeconds)
                 {
-                    // Switch to Stage 3 when off the right edge
-                    Direction = new Vector2(-1, 0);
-                    moveStage = 3;
+                    // If reached, move to the next waypoint
+                    _currentWaypointIndex++;
                 }
-            }
-            else if (moveStage == 3)
-            {
-                // Stage 3: Move from right to left
 
-                if (Position.X <= Globals.ScreenWidth - 300)
-                {
-                    // Switch back to Stage 0 when close to the left edge
-                    Direction = new Vector2(1, 0);
-                    moveStage = 0;
-                }
             }
 
-            Position += Direction * Globals.ElapsedGameTimeSeconds * _speed;
             LifeTime += Globals.ElapsedGameTimeSeconds;
+        }
+
+        public void InitWaypoints()
+        {
+            List<Vector2> relativeWaypoints = new List<Vector2>();
+            Vector2 previousPosition = _startingPosition;
+
+            if (_startingPosition.Y < Globals.ScreenHeight / 2)
+            {
+                relativeWaypoints.Add(new Vector2(-500, 0));    // Move left
+                relativeWaypoints.Add(new Vector2(60, 60));   // Move down-right
+                relativeWaypoints.Add(new Vector2(-500, 0));    // Move left
+                relativeWaypoints.Add(new Vector2(60, 60));   // Move down-right
+                relativeWaypoints.Add(new Vector2(-1000, 0));   // Move left (off screen)
+            }
+            else
+            {
+                relativeWaypoints.Add(new Vector2(-500, 0));    // Move left
+                relativeWaypoints.Add(new Vector2(60, -60));   // Move up-right
+                relativeWaypoints.Add(new Vector2(-500, 0));    // Move left
+                relativeWaypoints.Add(new Vector2(60, -60));   // Move down-right
+                relativeWaypoints.Add(new Vector2(-1000, 0));   // Move left (off screen)
+            }
+
+
+
+            foreach (var waypoint in relativeWaypoints)
+            {
+                Vector2 nextWaypoint = new Vector2(previousPosition.X + waypoint.X, previousPosition.Y + waypoint.Y);
+                _waypoints.Add(nextWaypoint);
+                previousPosition = nextWaypoint;
+                
+            }
 
         }
 

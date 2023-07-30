@@ -31,6 +31,7 @@ namespace SideScrollShooter._Managers
             {
                 powerUp.Update();
             }
+            _powerUps.RemoveAll((powerUps) => powerUps.HP <= 0);
         }
 
         public static void Draw()

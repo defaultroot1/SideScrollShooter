@@ -1,4 +1,5 @@
-﻿using SideScrollShooter._Models._Base;
+﻿using SideScrollShooter._Models;
+using SideScrollShooter._Models._Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,22 +11,39 @@ namespace SideScrollShooter._Managers
     public static class CollisionManager
     {
 
-        public static void Update()
+        public static void Update(PlayerShip playerShip)
         {
             PlayerProjectileHandler();
+            PlayerShipPowerUpHandler(playerShip);
         }
 
         public static void PlayerProjectileHandler()
         {
             foreach (var projectile in ProjectileManager.playerProjectiles)
             {
-                foreach (var enemy in EnemyManager.enemies)
+                foreach (var swarm in EnemyManager.allEnemies)
                 {
-                    if(projectile.GetBounds().Intersects(enemy.GetBounds()))
+                    foreach (var enemy in swarm) 
                     {
-                        enemy.HP -= projectile.Damage;
-                        projectile.Destroy();
+                        if (projectile.GetBounds().Intersects(enemy.GetBounds()))
+                        {
+                            enemy.HP -= projectile.Damage;
+                            projectile.Destroy();
+                        }
                     }
+
+                }
+            }
+        }
+
+        public static void PlayerShipPowerUpHandler(PlayerShip playerShip)
+        {
+            foreach (var powerUp in PowerUpManager._powerUps)
+            {
+                if (powerUp.GetBounds().Intersects(playerShip.GetBounds()))
+                {
+                    powerUp.HP--;
+                    playerShip.OrangePowerUpsCollected++;
                 }
             }
         }

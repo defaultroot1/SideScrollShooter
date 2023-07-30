@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SideScrollShooter._Models
 {
@@ -21,6 +22,7 @@ namespace SideScrollShooter._Models
         public BeamGun BeamGun = new BeamGun();
         public int Width;
         public int Height;
+        public int OrangePowerUpsCollected = 0;
 
         public PlayerShip()
         {
@@ -71,6 +73,11 @@ namespace SideScrollShooter._Models
         public void ActivateLaserGun()
         {
             Weapon = LaserGun;
+        }
+
+        public Rectangle GetBounds()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
         }
 
     }
