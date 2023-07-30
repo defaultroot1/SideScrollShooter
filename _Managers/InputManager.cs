@@ -26,11 +26,11 @@ namespace SideScrollShooter._Managers
                 if (keyboardState.IsKeyDown(Keys.W)) Direction.Y--;
                 if (keyboardState.IsKeyDown(Keys.S)) Direction.Y++;
 
+                // Toggle weapon, for testing
                 if (keyboardState.IsKeyDown(Keys.D1)) playerShip.ActivateLaserGun();
                 if (keyboardState.IsKeyDown(Keys.D2)) playerShip.ActivateBeamGun();
-                if (keyboardState.IsKeyDown(Keys.P) && _lastKeyboardState.IsKeyUp(Keys.P)) PowerUpManager.AddOrangePowerUp(playerShip.Position);
-                if (keyboardState.IsKeyDown(Keys.L) && _lastKeyboardState.IsKeyUp(Keys.L)) PowerUpManager.AddBluePowerUp(playerShip.Position);
 
+                // Fire weapon
                 SpacePressed = keyboardState.IsKeyDown(Keys.Space) && _lastKeyboardState.IsKeyUp(Keys.Space);
             }
             _lastKeyboardState = keyboardState;

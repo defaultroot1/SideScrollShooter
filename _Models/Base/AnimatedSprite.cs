@@ -15,8 +15,10 @@ namespace SideScrollShooter._Models._Base
         public int Width { get; protected set; }    
         public int Height { get; protected set; }
         public int HP = 1;
+        public bool DropsPowerUp { get; set; } = false;
+        public float Rotation { get; set; }
 
-        public AnimatedSprite(Texture2D texture, Vector2 position, int frames, float animationSpeed = 0.1f) : base(texture, position)
+		public AnimatedSprite(Texture2D texture, Vector2 position, int frames, float animationSpeed = 0.1f) : base(texture, position)
         {
             _frames = frames;
             _animationSpeed = animationSpeed;
@@ -35,9 +37,9 @@ namespace SideScrollShooter._Models._Base
             _anim.Update();
         }
 
-        public override void Draw()
+		public override void Draw()
         {
-            _anim.Draw(Position);
+            _anim.Draw(Position, Rotation);
         }
     }
 }

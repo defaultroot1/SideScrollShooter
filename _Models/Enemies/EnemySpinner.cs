@@ -17,10 +17,11 @@ namespace SideScrollShooter._Models.Enemies
         private List<Vector2> _waypoints = new List<Vector2>();
         private int _currentWaypointIndex = 0;
 
-        public EnemySpinner(Texture2D texture, Vector2 position, Vector2 startingPosition, int frames) : base(texture, position, frames) 
+		public EnemySpinner(Texture2D texture, Vector2 position, Vector2 startingPosition, int frames) : base(texture, position, frames) 
         {
             _startingPosition = startingPosition;
             InitWaypoints();
+            DropsPowerUp = true; // Swarms of this enemy type will drop a powerup when completely destroyed
             
         }
 

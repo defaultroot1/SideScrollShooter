@@ -15,8 +15,10 @@ namespace SideScrollShooter._Managers
         {
             _backgroundManager = new BackgroundManager();
             _playerShip = new PlayerShip();
+
             EnemyManager.SpawnEnemySpinner(200, 5);
             EnemyManager.SpawnEnemySpinner(800, 8);
+            EnemyManager.SpawnEnemySeeker(500);
 
         }
 
@@ -30,7 +32,7 @@ namespace SideScrollShooter._Managers
             EnemyManager.Update();
             CollisionManager.Update(_playerShip);
 
-            Debug.WriteLine(_playerShip.OrangePowerUpsCollected);
+            Debug.WriteLine($"PlayerPosition: {Globals.playerPosition}");
 
         }
 

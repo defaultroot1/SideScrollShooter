@@ -17,6 +17,7 @@ namespace SideScrollShooter._Models
         private float _frameTimeLeft;
         private bool _animationActive = true;
         private bool _animationLooped = true;
+        public float Rotation { get; set; }
 
         public Animation(Texture2D texture, int framesX, int framesY, float frameTime, int rows=1, bool loop=true)
         {
@@ -64,9 +65,9 @@ namespace SideScrollShooter._Models
             }
         }
 
-        public void Draw(Vector2 position)
+        public void Draw(Vector2 position, float rotation=0)
         {
-            Globals.SpriteBatch.Draw(_texture, position, _sourceRectangles[_frame], Color.White, 0, Vector2.Zero, Vector2.One, SpriteEffects.None, 1);
+            Globals.SpriteBatch.Draw(_texture, position, _sourceRectangles[_frame], Color.White, rotation, Vector2.Zero, Vector2.One, SpriteEffects.None, 1);
         }
     }
 }

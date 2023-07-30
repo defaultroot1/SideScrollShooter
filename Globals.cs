@@ -14,6 +14,10 @@ namespace SideScrollShooter
         public static float ElapsedGameTimeSeconds { get; set; }
         public static int ScreenWidth;
         public static int ScreenHeight;
+        public static int PlayerWidth;
+        public static int PlayerHeight;
+        public static float scrollSpeed = 100.0f;
+        public static Vector2 playerPosition;
 
         public static void UpdateElapsedGameTime(GameTime gameTime)
         {

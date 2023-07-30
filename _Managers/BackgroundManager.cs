@@ -14,14 +14,16 @@ namespace SideScrollShooter._Managers
 
         public BackgroundManager()
         {
+            // Create 3 layers of background at different speeds. Each layer is duplicated to allow looping
             _backgrounds.Add(new Background(
                 Globals.ContentManger.Load<Texture2D>("Background/starfield1"),
                 Vector2.Zero,
-                1, 100.0f, 1.0f));
+                1, 80.0f, 1.0f));
             _backgrounds.Add(new Background(
                 Globals.ContentManger.Load<Texture2D>("Background/starfield1"),
                 new Vector2(Globals.ScreenWidth, 0),
-                1, 100.0f, 1.0f));
+                1, 80.0f, 1.0f));
+
             _backgrounds.Add(new Background(
                 Globals.ContentManger.Load<Texture2D>("Background/starfield2"),
                 Vector2.Zero,
@@ -30,6 +32,7 @@ namespace SideScrollShooter._Managers
                 Globals.ContentManger.Load<Texture2D>("Background/starfield2"),
                 new Vector2(Globals.ScreenWidth, 0),
                 6, 50.0f, 1.0f));
+
             _backgrounds.Add(new Background(
                 Globals.ContentManger.Load<Texture2D>("Background/starfield3"),
                 Vector2.Zero,
@@ -46,6 +49,7 @@ namespace SideScrollShooter._Managers
             {
                 if (background.Position.X <= -Globals.ScreenWidth)
                 {
+                    // When background reaches end of left screen, reposition it back to right for looping
                     background.Position = new Vector2(Globals.ScreenWidth, 0);
                 }
                 background.Update();

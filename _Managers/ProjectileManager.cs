@@ -34,7 +34,7 @@ namespace SideScrollShooter._Managers
                 projectile.Update();
             }
 
-
+            // For any projectiles that have reached their lifespan, remove them
             playerProjectiles.RemoveAll((p) => p.lifespan <= 0);
             enemyProjectiles.RemoveAll((p) => p.lifespan <= 0);
         }

@@ -43,13 +43,20 @@ namespace SideScrollShooter._Models
 
             Weapon = LaserGun;
 
+            Globals.PlayerWidth = Width;
+            Globals.PlayerHeight = Height;
+
         }
 
         public void Update()
         {
             if(InputManager.Moving)
             {
-                Position += Vector2.Normalize(InputManager.Direction) * _speed * Globals.ElapsedGameTimeSeconds;
+                var direction = Vector2.Normalize(InputManager.Direction);
+                Position = new Vector2(
+                    MathHelper.Clamp(Position.X + (direction.X *_speed * Globals.ElapsedGameTimeSeconds), 0, Globals.ScreenWidth - Width),
+                    MathHelper.Clamp(Position.Y+ (direction.Y * _speed * Globals.ElapsedGameTimeSeconds), 0, Globals.ScreenHeight - Height));
+
             }
 
             _anims.Update(InputManager.Direction);
@@ -58,6 +65,8 @@ namespace SideScrollShooter._Models
             {
                 Weapon.Fire(this);
             }
+
+            Globals.playerPosition = Position;
         }
 
         public void Draw()
