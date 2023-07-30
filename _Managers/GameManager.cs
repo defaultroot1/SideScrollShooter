@@ -7,13 +7,13 @@ namespace SideScrollShooter._Managers
 {
     internal class GameManager
     {
+        private BackgroundManager _backgroundManager;
         private PlayerShip _playerShip;
-        private EnemySpinner _enemySpinner;
-        private PowerUpBlue _powerUpBlue;
-        private PowerUpOrange _powerUpOrange;
+
 
         public void Init() 
-        { 
+        {
+            _backgroundManager = new BackgroundManager();
             _playerShip = new PlayerShip();
             EnemyManager.SpawnEnemySpinner(200, 5);
             EnemyManager.SpawnEnemySpinner(800, 8);
@@ -22,6 +22,7 @@ namespace SideScrollShooter._Managers
 
         public void Update()
         {
+            _backgroundManager.Update();
             InputManager.Update(_playerShip);
             ProjectileManager.Update();
             _playerShip.Update();
@@ -34,8 +35,8 @@ namespace SideScrollShooter._Managers
         }
 
         public void Draw()
-        {
-            
+        {   
+            _backgroundManager.Draw();
             ProjectileManager.Draw();
             _playerShip.Draw();
             PowerUpManager.Draw();
