@@ -47,7 +47,19 @@ namespace SideScrollShooter._Managers
             allEnemies.Add(enemySwarm);
 		}
 
-        public static void Update()
+		public static void SpawnEnemyRoller(int yAxisEntry)
+		{
+
+			List<AnimatedSprite> enemySwarm = new List<AnimatedSprite>();
+
+			enemySwarm.Add(new EnemyRoller(Globals.ContentManger.Load<Texture2D>("Sprites/EnemyRoller"),
+					new Vector2(Globals.ScreenWidth - 100, yAxisEntry),
+					6));
+
+			allEnemies.Add(enemySwarm);
+		}
+
+		public static void Update()
         {
             System.Diagnostics.Debug.WriteLine($"Swarm count: {allEnemies.Count}");
             // Hold the position of each enemy so that when last enemy is destroyed the PowerUp can be generated in correct position

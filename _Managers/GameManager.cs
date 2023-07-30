@@ -19,8 +19,9 @@ namespace SideScrollShooter._Managers
             EnemyManager.SpawnEnemySpinner(200, 5);
             EnemyManager.SpawnEnemySpinner(800, 8);
             EnemyManager.SpawnEnemySeeker(500);
+            EnemyManager.SpawnEnemyRoller(300);
 
-        }
+		}
 
         public void Update()
         {
