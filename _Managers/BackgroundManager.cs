@@ -18,29 +18,29 @@ namespace SideScrollShooter._Managers
             _backgrounds.Add(new Background(
                 Globals.ContentManger.Load<Texture2D>("Background/starfield1"),
                 Vector2.Zero,
-                1, 80.0f, 1.0f));
+                1, 80.0f, true, 1.0f));
             _backgrounds.Add(new Background(
                 Globals.ContentManger.Load<Texture2D>("Background/starfield1"),
                 new Vector2(Globals.ScreenWidth, 0),
-                1, 80.0f, 1.0f));
+                1, 80.0f, true, 1.0f));
 
             _backgrounds.Add(new Background(
                 Globals.ContentManger.Load<Texture2D>("Background/starfield2"),
                 Vector2.Zero,
-                6, 50.0f, 1.0f));
+                6, 50.0f, true, 1.0f));
             _backgrounds.Add(new Background(
                 Globals.ContentManger.Load<Texture2D>("Background/starfield2"),
                 new Vector2(Globals.ScreenWidth, 0),
-                6, 50.0f, 1.0f));
+                6, 50.0f, true, 1.0f));
 
             _backgrounds.Add(new Background(
                 Globals.ContentManger.Load<Texture2D>("Background/starfield3"),
                 Vector2.Zero,
-                6, 10.0f, 0.5f));
+                6, 10.0f, true, 0.5f));
             _backgrounds.Add(new Background(
                 Globals.ContentManger.Load<Texture2D>("Background/starfield3"),
                 new Vector2(Globals.ScreenWidth, 0),
-                6, 10.0f, 0.5f));
+                6, 10.0f, true, 0.5f));
         }
 
         public void Update()

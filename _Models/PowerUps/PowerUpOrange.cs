@@ -9,7 +9,7 @@ namespace SideScrollShooter._Models.PowerUps
 {
     internal class PowerUpOrange : AnimatedSprite
     {
-        public PowerUpOrange(Texture2D texture, Vector2 position, int frames) : base(texture, position, frames) { }
+        public PowerUpOrange(Texture2D texture, Vector2 position, int frames, bool loop) : base(texture, position, frames, loop) { }
         private Vector2 _direction = new Vector2(-1, 0);
 
         public override void Update()

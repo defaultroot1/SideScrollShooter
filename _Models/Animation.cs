@@ -19,7 +19,7 @@ namespace SideScrollShooter._Models
         private bool _animationLooped = true;
         public float Rotation { get; set; }
 
-        public Animation(Texture2D texture, int framesX, int framesY, float frameTime, int rows=1, bool loop=true)
+        public Animation(Texture2D texture, int framesX, int framesY, float frameTime, bool loop = true, int rows=1 )
         {
             _texture = texture;
             _frameTime = frameTime;

@@ -28,15 +28,15 @@ namespace SideScrollShooter._Models
         {
             Texture = Globals.ContentManger.Load<Texture2D>("Sprites/playerShipSprite3x2");
 
-            _anims.AddAnimation(new Vector2(0, 0), new Animation(Texture, 2, 3, 0.1f, 1, true)); // Idle
-            _anims.AddAnimation(new Vector2(1, 0), new Animation(Texture, 2, 3, 0.1f, 1, true)); // Right
-            _anims.AddAnimation(new Vector2(-1, 0), new Animation(Texture, 2, 3, 0.1f, 1, true)); // Left
-            _anims.AddAnimation(new Vector2(0, -1), new Animation(Texture, 2, 3, 0.1f, 2, false)); // Up
-            _anims.AddAnimation(new Vector2(0, 1), new Animation(Texture, 2, 3, 0.1f, 3, false)); // Down
-            _anims.AddAnimation(new Vector2(-1, -1), new Animation(Texture, 2, 3, 0.1f, 2, false)); // Up Left
-            _anims.AddAnimation(new Vector2(1, -1), new Animation(Texture, 2, 3, 0.1f, 2, false)); // Up Right
-            _anims.AddAnimation(new Vector2(-1, 1), new Animation(Texture, 2, 3, 0.1f, 3, false)); // Down Left
-            _anims.AddAnimation(new Vector2(1, 1), new Animation(Texture, 2, 3, 0.1f, 3, false)); // Down Right
+            _anims.AddAnimation(new Vector2(0, 0), new Animation(Texture, 2, 3, 0.1f, true, 1)); // Idle
+            _anims.AddAnimation(new Vector2(1, 0), new Animation(Texture, 2, 3, 0.1f, true, 1)); // Right
+            _anims.AddAnimation(new Vector2(-1, 0), new Animation(Texture, 2, 3, 0.1f, true, 1)); // Left
+            _anims.AddAnimation(new Vector2(0, -1), new Animation(Texture, 2, 3, 0.1f, false, 2)); // Up
+            _anims.AddAnimation(new Vector2(0, 1), new Animation(Texture, 2, 3, 0.1f, false, 3)); // Down
+            _anims.AddAnimation(new Vector2(-1, -1), new Animation(Texture, 2, 3, 0.1f, false, 2)); // Up Left
+            _anims.AddAnimation(new Vector2(1, -1), new Animation(Texture, 2, 3, 0.1f, false, 2)); // Up Right
+            _anims.AddAnimation(new Vector2(-1, 1), new Animation(Texture, 2, 3, 0.1f, false, 3)); // Down Left
+            _anims.AddAnimation(new Vector2(1, 1), new Animation(Texture, 2, 3, 0.1f, false, 3)); // Down Right
 
             Width = Texture.Width / 2;
             Height = Texture.Height / 3;

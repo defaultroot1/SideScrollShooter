@@ -11,9 +11,10 @@ namespace SideScrollShooter._Models.Enemies
 	{
 		private float _speed = 200.0f;
 		private Vector2 _direction = new Vector2(-1, 0);
-		public EnemySeeker(Texture2D texture, Vector2 position, int frames) : base(texture, position, frames)
+		public EnemySeeker(Texture2D texture, Vector2 position, int frames, bool loop) : base(texture, position, frames, loop)
 		{
 			DropsPowerUp = false;
+			Points = 50;
 		}
 
 		public override void Update()

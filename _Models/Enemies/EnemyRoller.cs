@@ -12,9 +12,9 @@ namespace SideScrollShooter._Models.Enemies
 		private Vector2 Direction = new Vector2(-1, 1);
 		private float timeSinceDirectionChange { get; set; } = 0f;
 		private float _speed { get; set; } = 300f;
-		public EnemyRoller(Texture2D texture, Vector2 position, int frames) : base(texture, position, frames)
+		public EnemyRoller(Texture2D texture, Vector2 position, int frames, bool loop) : base(texture, position, frames, loop)
 		{
-
+			Points = 20;
 		}
 
 		public override void Update()

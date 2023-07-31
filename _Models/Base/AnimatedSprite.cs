@@ -9,7 +9,7 @@ namespace SideScrollShooter._Models._Base
 {
     public class AnimatedSprite : Sprite
     {
-        protected Animation _anim;
+        public Animation Anim;
         protected int _frames;
         protected float _animationSpeed;
         public int Width { get; protected set; }    
@@ -17,14 +17,16 @@ namespace SideScrollShooter._Models._Base
         public int HP = 1;
         public bool DropsPowerUp { get; set; } = false;
         public float Rotation { get; set; }
+        public int Points { get; protected set; }
 
-		public AnimatedSprite(Texture2D texture, Vector2 position, int frames, float animationSpeed = 0.1f) : base(texture, position)
+		public AnimatedSprite(Texture2D texture, Vector2 position, int frames, bool loop, float animationSpeed = 0.1f) : base(texture, position)
         {
             _frames = frames;
             _animationSpeed = animationSpeed;
-            _anim = new Animation(texture, _frames, 1, _animationSpeed);
+            Anim = new Animation(texture, _frames, 1, _animationSpeed, loop);
             Width = texture.Width / frames;
             Height = texture.Height;
+            Points = 0;
         }
 
         public override Rectangle GetBounds()
@@ -34,12 +36,12 @@ namespace SideScrollShooter._Models._Base
 
         public virtual void Update()
         {
-            _anim.Update();
+            Anim.Update();
         }
 
 		public override void Draw()
         {
-            _anim.Draw(Position, Rotation);
+            Anim.Draw(Position, Rotation);
         }
     }
 }

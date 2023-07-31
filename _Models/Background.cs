@@ -12,7 +12,7 @@ namespace SideScrollShooter._Models
         private float _scrollSpeed;
         private Vector2 _direction = new Vector2(-1, 0);
 
-        public Background(Texture2D texture, Vector2 position, int frames, float scrollSpeed, float animationSpeed) : base(texture, position, frames, animationSpeed)
+        public Background(Texture2D texture, Vector2 position, int frames, float scrollSpeed, bool loop, float animationSpeed) : base(texture, position, frames, loop, animationSpeed)
         {
             _scrollSpeed = scrollSpeed;
         }

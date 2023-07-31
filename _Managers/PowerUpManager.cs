@@ -16,13 +16,13 @@ namespace SideScrollShooter._Managers
         public static void AddOrangePowerUp(Vector2 position)
         {
             _powerUps.Add(new PowerUpOrange(Globals.ContentManger.Load<Texture2D>("Sprites/PowerUpOrange"),
-                position, 4));
+                position, 4, true));
         }
 
         public static void AddBluePowerUp(Vector2 position)
         {
             _powerUps.Add(new PowerUpOrange(Globals.ContentManger.Load<Texture2D>("Sprites/PowerUpBlue"),
-                position, 4));
+                position, 4, true));
         }
 
         public static void Update()

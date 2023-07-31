@@ -1,5 +1,6 @@
 ﻿using SideScrollShooter._Models;
 using SideScrollShooter._Models.Enemies;
+using SideScrollShooter._Models.FX;
 using SideScrollShooter._Models.PowerUps;
 using System.Diagnostics;
 
@@ -32,8 +33,8 @@ namespace SideScrollShooter._Managers
             PowerUpManager.Update();
             EnemyManager.Update();
             CollisionManager.Update(_playerShip);
-
-            Debug.WriteLine($"PlayerPosition: {Globals.playerPosition}");
+            ScoreManager.Update();
+            FXManager.Update();
 
         }
 
@@ -44,6 +45,7 @@ namespace SideScrollShooter._Managers
             _playerShip.Draw();
             PowerUpManager.Draw();
             EnemyManager.Draw();
+            FXManager.Draw();
 
         }
 

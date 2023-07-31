@@ -28,7 +28,7 @@ namespace SideScrollShooter._Managers
                 enemySwarm.Add(new EnemySpinner(Globals.ContentManger.Load<Texture2D>("Sprites/EnemySpinner"),
                     new Vector2(Globals.ScreenWidth + (60 * i), yAxisEntry),
                     new Vector2(Globals.ScreenWidth, yAxisEntry),
-                    3));
+                    3, true));
             }
 
             allEnemies.Add(enemySwarm);
@@ -42,7 +42,7 @@ namespace SideScrollShooter._Managers
 
 			enemySwarm.Add(new EnemySeeker(Globals.ContentManger.Load<Texture2D>("Sprites/EnemySeeker"),
 					new Vector2(Globals.ScreenWidth - 100, yAxisEntry),
-					1));
+					1, true));
 
             allEnemies.Add(enemySwarm);
 		}
@@ -54,14 +54,13 @@ namespace SideScrollShooter._Managers
 
 			enemySwarm.Add(new EnemyRoller(Globals.ContentManger.Load<Texture2D>("Sprites/EnemyRoller"),
 					new Vector2(Globals.ScreenWidth - 100, yAxisEntry),
-					6));
+					6, true));
 
 			allEnemies.Add(enemySwarm);
 		}
 
 		public static void Update()
         {
-            System.Diagnostics.Debug.WriteLine($"Swarm count: {allEnemies.Count}");
             // Hold the position of each enemy so that when last enemy is destroyed the PowerUp can be generated in correct position
             Vector2 lastPosition = new Vector2();
             bool dropsPowerUp = false;
@@ -73,6 +72,19 @@ namespace SideScrollShooter._Managers
                     enemy.Update();
                     lastPosition = enemy.Position;
                     dropsPowerUp = enemy.DropsPowerUp;
+                    if (enemy.HP <= 0)
+                    {
+						ScoreManager.score += enemy.Points;
+
+                        switch (enemy.GetType().Name)
+                        {
+                            case "EnemySpinner":
+                                FXManager.SpawnSpinnerExplosion(enemy.Position);
+                                break;
+						}
+                        
+					}
+                
                 }
 
                 // For any enemies that were damaged this frame, remove them
