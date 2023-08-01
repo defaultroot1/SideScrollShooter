@@ -12,7 +12,9 @@ namespace SideScrollShooter._Models
         private Texture2D _texture;
         private List<Rectangle> _sourceRectangles = new List<Rectangle>();
         private int _frames;
+        public int Frames => _frames;
         private int _frame;
+        public int Frame => _frame;
         private float _frameTime;
         private float _frameTimeLeft;
         private bool _animationActive = true;

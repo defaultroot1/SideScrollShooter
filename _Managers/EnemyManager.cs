@@ -81,6 +81,12 @@ namespace SideScrollShooter._Managers
                             case "EnemySpinner":
                                 FXManager.SpawnSpinnerExplosion(enemy.Position);
                                 break;
+							case "EnemySeeker":
+								FXManager.SpawnSmokeyExplosion(enemy.Position);
+								break;
+							case "EnemyRoller":
+								FXManager.SpawnSmokeyExplosion(enemy.Position);
+								break;
 						}
                         
 					}
