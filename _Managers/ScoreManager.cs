@@ -10,6 +10,7 @@ namespace SideScrollShooter._Managers
 	{
 		public static int score = 0;
 		private static int highScore = 0;
+		public static int HighScore => highScore;
 
 		public static void Update()
 		{

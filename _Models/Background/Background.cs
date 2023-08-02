@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SideScrollShooter._Models
+namespace SideScrollShooter._Models.Background
 {
     internal class Background : AnimatedSprite
     {

@@ -85,6 +85,13 @@
 /processorParam:TextureFormat=Color
 /build:Background/starfieldtest.png
 
+#begin Fonts/scorefont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/scorefont.spritefont
+
 #begin Sprites/beam.png
 /importer:TextureImporter
 /processor:TextureProcessor

@@ -10,12 +10,14 @@ namespace SideScrollShooter._Managers
     {
         private BackgroundManager _backgroundManager;
         private PlayerShip _playerShip;
+        private GUI _gui;
 
 
         public void Init() 
         {
             _backgroundManager = new BackgroundManager();
             _playerShip = new PlayerShip();
+            _gui = new GUI();
 
             //EnemyManager.SpawnEnemySpinner(200, 5);
             //EnemyManager.SpawnEnemySpinner(800, 8);
@@ -46,6 +48,7 @@ namespace SideScrollShooter._Managers
             PowerUpManager.Draw();
             EnemyManager.Draw();
             FXManager.Draw();
+            _gui.Draw();
 
         }
 

@@ -18,6 +18,11 @@ namespace SideScrollShooter._Models.PowerUps
             base.Update();
             
         }
+
+        public void Effect(PlayerShip playerShip)
+        {
+            playerShip.IncreaseSpeed(50);
+        }
     }
 
 }

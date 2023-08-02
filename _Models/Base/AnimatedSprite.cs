@@ -1,4 +1,4 @@
-﻿using SideScrollShooter._Models;
+﻿using SideScrollShooter._Models.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;

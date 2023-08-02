@@ -1,5 +1,5 @@
-﻿using SideScrollShooter._Models;
-using SideScrollShooter._Models._Base;
+﻿using SideScrollShooter._Models._Base;
+using SideScrollShooter._Models.Background;
 using System;
 using System.Collections.Generic;
 using System.Linq;

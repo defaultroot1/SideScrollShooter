@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace SideScrollShooter._Models
+namespace SideScrollShooter._Models.Base
 {
     public class Animation
     {
@@ -21,7 +21,7 @@ namespace SideScrollShooter._Models
         private bool _animationLooped = true;
         public float Rotation { get; set; }
 
-        public Animation(Texture2D texture, int framesX, int framesY, float frameTime, bool loop = true, int rows=1 )
+        public Animation(Texture2D texture, int framesX, int framesY, float frameTime, bool loop = true, int rows = 1)
         {
             _texture = texture;
             _frameTime = frameTime;
@@ -31,8 +31,8 @@ namespace SideScrollShooter._Models
             var frameHeight = _texture.Height / framesY;
             _animationLooped = loop;
 
-            for (int i = 0; i < _frames; i++) 
-            { 
+            for (int i = 0; i < _frames; i++)
+            {
                 _sourceRectangles.Add(new Rectangle(i * frameWidth, (rows - 1) * frameHeight, frameWidth, frameHeight));
             }
         }
@@ -67,7 +67,7 @@ namespace SideScrollShooter._Models
             }
         }
 
-        public void Draw(Vector2 position, float rotation=0)
+        public void Draw(Vector2 position, float rotation = 0)
         {
             Globals.SpriteBatch.Draw(_texture, position, _sourceRectangles[_frame], Color.White, rotation, Vector2.Zero, Vector2.One, SpriteEffects.None, 1);
         }

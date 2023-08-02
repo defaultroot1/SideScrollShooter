@@ -1,12 +1,13 @@
 ﻿using SideScrollShooter._Managers;
 using SideScrollShooter._Models.Weapons;
-using SideScrollShooter._Models._Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
+using SideScrollShooter._Models.Base;
+using SideScrollShooter._Models._Base;
 
 namespace SideScrollShooter._Models
 {
@@ -96,6 +97,11 @@ namespace SideScrollShooter._Models
         public void ResetPosition()
         {
             Position = StartingPosition;
+        }
+
+        public void IncreaseSpeed(float amount)
+        {
+            _speed += amount;
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using SideScrollShooter._Models;
 using SideScrollShooter._Models._Base;
+using SideScrollShooter._Models.PowerUps;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,10 +44,11 @@ namespace SideScrollShooter._Managers
         {
             foreach (var powerUp in PowerUpManager._powerUps)
             {
-                if (powerUp.GetBounds().Intersects(playerShip.GetBounds()))
+                if (powerUp.GetBounds().Intersects(playerShip.GetBounds()) && powerUp is PowerUpOrange)
                 {
                     powerUp.HP--;
                     playerShip.OrangePowerUpsCollected++;
+                    playerShip.IncreaseSpeed(100);
                 }
             }
         }
