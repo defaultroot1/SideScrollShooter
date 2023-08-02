@@ -60,6 +60,7 @@ namespace SideScrollShooter._Managers
                     if (playerShip.GetBounds().Intersects(enemy.GetBounds()))
                     {
                         System.Diagnostics.Debug.WriteLine("HIT!");
+                        //playerShip.ResetPosition();
                     }
                 }
             }

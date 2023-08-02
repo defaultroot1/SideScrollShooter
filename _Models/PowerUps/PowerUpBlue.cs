@@ -15,7 +15,7 @@ namespace SideScrollShooter._Models.PowerUps
 
         public override void Update()
         {
-            Position += _direction * Globals.scrollSpeed * Globals.ElapsedGameTimeSeconds;
+            Position += _direction * Globals.globalScrollSpeed * Globals.ElapsedGameTimeSeconds;
             base.Update();
 
         }

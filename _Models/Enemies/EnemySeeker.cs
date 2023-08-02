@@ -21,13 +21,16 @@ namespace SideScrollShooter._Models.Enemies
 		{
 			var toPlayer = new Vector2((Globals.playerPosition.X + Globals.PlayerWidth / 2) - Position.X,
 				Globals.playerPosition.Y - Position.Y);
-			Rotation = (float)Math.Atan2(toPlayer.X, toPlayer.Y);
+			//Rotation = (float)Math.Atan2(toPlayer.X, toPlayer.Y);
 
 			var direction = Vector2.Normalize(toPlayer);
 
 			Position += direction * _speed * Globals.ElapsedGameTimeSeconds;
 
-			
+
+			float angle = (float)Math.Atan2(toPlayer.Y, toPlayer.X);
+
+			Rotation = angle + MathF.PI;
 		}
 	}
 }

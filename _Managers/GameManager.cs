@@ -17,10 +17,10 @@ namespace SideScrollShooter._Managers
             _backgroundManager = new BackgroundManager();
             _playerShip = new PlayerShip();
 
-            EnemyManager.SpawnEnemySpinner(200, 5);
-            EnemyManager.SpawnEnemySpinner(800, 8);
+            //EnemyManager.SpawnEnemySpinner(200, 5);
+            //EnemyManager.SpawnEnemySpinner(800, 8);
             EnemyManager.SpawnEnemySeeker(500);
-            EnemyManager.SpawnEnemyRoller(300);
+            //EnemyManager.SpawnEnemyRoller(300);
 
 		}
 

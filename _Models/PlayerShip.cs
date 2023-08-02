@@ -12,7 +12,8 @@ namespace SideScrollShooter._Models
 {
     public class PlayerShip
     {
-        public Vector2 Position = new Vector2(100, 100);
+        public Vector2 StartingPosition = new Vector2(100, Globals.ScreenHeight / 2);
+        public Vector2 Position;
         private float _speed = 600f;
         private AnimationManager _anims = new AnimationManager();
         public Texture2D Texture;
@@ -46,6 +47,8 @@ namespace SideScrollShooter._Models
             Globals.PlayerWidth = Width;
             Globals.PlayerHeight = Height;
 
+            Position = StartingPosition;
+
         }
 
         public void Update()
@@ -66,6 +69,7 @@ namespace SideScrollShooter._Models
                 Weapon.Fire(this);
             }
 
+            // Keep track of player current position in global for easy tracking for collisions
             Globals.playerPosition = Position;
         }
 
@@ -87,6 +91,11 @@ namespace SideScrollShooter._Models
         public Rectangle GetBounds()
         {
             return new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
+        }
+
+        public void ResetPosition()
+        {
+            Position = StartingPosition;
         }
 
     }
