@@ -11,6 +11,7 @@ namespace SideScrollShooter._Managers
     internal class BackgroundManager
     {
         private List<Background> _backgrounds = new List<Background>();
+        private BackgroundPlanet _backgroundPlanet;
 
         public BackgroundManager()
         {
@@ -41,7 +42,10 @@ namespace SideScrollShooter._Managers
                 Globals.ContentManger.Load<Texture2D>("Background/starfield3"),
                 new Vector2(Globals.ScreenWidth, 0),
                 6, 10.0f, true, 0.5f));
-        }
+
+            _backgroundPlanet = new BackgroundPlanet(Globals.ContentManger.Load<Texture2D>("Background/planet03small"),
+                new Vector2(400, 600));
+		}
 
         public void Update()
         {
@@ -54,15 +58,20 @@ namespace SideScrollShooter._Managers
                 }
                 background.Update();
             }
+
+            _backgroundPlanet.Update();
         }
 
         public void Draw()
         {
-            foreach (var background in _backgrounds)
+			
+			foreach (var background in _backgrounds)
             {
                 background.Draw();
             }
-        }
+			_backgroundPlanet.Draw();
+
+		}
 
 
     }

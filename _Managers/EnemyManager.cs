@@ -12,8 +12,17 @@ namespace SideScrollShooter._Managers
     {
         // A List holding Lists of enemySwarms
         public static List<List<AnimatedSprite>> allEnemies = new List<List<AnimatedSprite>>();
+        public static float EnemySeekerSpawnRate = 5f; // Spawns every x seconds
+        public static float EnemySeekerSpawnTimer = 0f;
+        public static int EnemySeekerSpawnNumber = 3; // How many spawn each time
+		public static float EnemySpinnerSpawnRate = 5f; // Spawns every x seconds
+		public static float EnemySpinnerSpawnTimer = 0f;
+		public static int EnemySpinnerSpawnNumber = 1; // How many spawn each time
+		public static float EnemyRollerSpawnRate = 10f; // Spawns every x seconds
+		public static float EnemyRollerSpawnTimer = 0f;
+		public static int EnemyRollerSpawnNumber = 5; // How many spawn each time
 
-        public static void SpawnEnemySpinner(int yAxisEntry, int numberEnemies)
+		public static void SpawnEnemySpinner(int yAxisEntry, int numberEnemies)
         {
             // Each group of enemies is added to a swarm List, which in turn is added to the allEnemies List
             // This lets us track if the player has destroyed all enemies in a single swarm, which results in a PowerUp
@@ -41,7 +50,7 @@ namespace SideScrollShooter._Managers
 			List<AnimatedSprite> enemySwarm = new List<AnimatedSprite>();
 
 			enemySwarm.Add(new EnemySeeker(Globals.ContentManger.Load<Texture2D>("Sprites/EnemySeeker"),
-					new Vector2(Globals.ScreenWidth - 100, yAxisEntry),
+					new Vector2(Globals.ScreenWidth + 50, yAxisEntry),
 					1, true));
 
             allEnemies.Add(enemySwarm);
@@ -103,12 +112,52 @@ namespace SideScrollShooter._Managers
                 }
 
 
+
             }
 
             // Remove any empty swarms from allEnemies
             allEnemies.RemoveAll((swarm) => swarm.Count <= 0);
 
-        }
+
+            EnemySeekerSpawnTimer += Globals.ElapsedGameTimeSeconds;
+			EnemySpinnerSpawnTimer += Globals.ElapsedGameTimeSeconds;
+			EnemyRollerSpawnTimer += Globals.ElapsedGameTimeSeconds;
+
+			// Spawn enemies based on time elapsed
+			if (EnemySeekerSpawnTimer >= EnemySeekerSpawnRate)
+            {
+                Random rand = new Random();
+                for (int i = 0; i < EnemySeekerSpawnNumber; i++)
+                {
+					SpawnEnemySeeker(rand.Next(200, Globals.ScreenHeight - 200));
+					
+				}
+				EnemySeekerSpawnTimer = 0;
+			}
+
+			if (EnemySpinnerSpawnTimer >= EnemySpinnerSpawnRate)
+			{
+				Random rand = new Random();
+				for (int i = 0; i < EnemySpinnerSpawnNumber; i++)
+				{
+					SpawnEnemySpinner(rand.Next(200, Globals.ScreenHeight - 200), 6);
+
+				}
+				EnemySpinnerSpawnTimer = 0;
+			}
+
+			if (EnemyRollerSpawnTimer >= EnemyRollerSpawnRate)
+			{
+				Random rand = new Random();
+				for (int i = 0; i < EnemyRollerSpawnNumber; i++)
+				{
+					SpawnEnemyRoller(rand.Next(200, Globals.ScreenHeight - 200));
+
+				}
+				EnemyRollerSpawnTimer = 0;
+			}
+
+		}
 
         public static void Draw()
         {
