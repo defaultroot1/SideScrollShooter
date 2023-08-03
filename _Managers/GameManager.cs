@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace SideScrollShooter._Managers
 {
-    internal class GameManager
+    public class GameManager
     {
         private BackgroundManager _backgroundManager;
         private PlayerShip _playerShip;
@@ -18,6 +18,7 @@ namespace SideScrollShooter._Managers
             _backgroundManager = new BackgroundManager();
             _playerShip = new PlayerShip();
             _gui = new GUI();
+            ScoreManager.LoadHighScore();
 
             //EnemyManager.SpawnEnemySpinner(200, 5);
             //EnemyManager.SpawnEnemySpinner(800, 8);
@@ -34,11 +35,12 @@ namespace SideScrollShooter._Managers
             _playerShip.Update();
             PowerUpManager.Update();
             EnemyManager.Update();
-            CollisionManager.Update(_playerShip);
-            ScoreManager.Update();
+			CollisionManager.Update(_playerShip, this);
+			ScoreManager.Update();
             FXManager.Update();
+			
 
-        }
+		}
 
         public void Draw()
         {   
@@ -50,6 +52,13 @@ namespace SideScrollShooter._Managers
             FXManager.Draw();
             _gui.Draw();
 
+        }
+
+        public void ResetGame()
+        {
+            ScoreManager.score = 0;
+            _playerShip.ResetPosition();
+            EnemyManager.ClearAllEnemies();
         }
 
     }

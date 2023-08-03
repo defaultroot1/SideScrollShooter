@@ -28,12 +28,12 @@ namespace SideScrollShooter._Models
 
 		public void DrawCurrentScore()
 		{
-			string str = ScoreManager.score.ToString("D4");
+			string str = ScoreManager.score.ToString("D5");
 			Globals.SpriteBatch.DrawString(_scoreFont, str, new Vector2(300, 10), Color.White);
 		}
 		public void DrawHiScore()
 		{
-			string str = $"HI {ScoreManager.HighScore.ToString("D4")}";
+			string str = $"HI {ScoreManager.HighScore.ToString("D5")}";
 			Globals.SpriteBatch.DrawString(_scoreFont, str, new Vector2(700, 10), Color.White);
 		}
 

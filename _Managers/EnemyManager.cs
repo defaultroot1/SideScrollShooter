@@ -14,13 +14,15 @@ namespace SideScrollShooter._Managers
         public static List<List<AnimatedSprite>> allEnemies = new List<List<AnimatedSprite>>();
         public static float EnemySeekerSpawnRate = 5f; // Spawns every x seconds
         public static float EnemySeekerSpawnTimer = 0f;
-        public static int EnemySeekerSpawnNumber = 3; // How many spawn each time
-		public static float EnemySpinnerSpawnRate = 5f; // Spawns every x seconds
+        public static int EnemySeekerSpawnNumber = 2; // How many spawn each time
+		public static float EnemySpinnerSpawnRate = 10f; // Spawns every x seconds
 		public static float EnemySpinnerSpawnTimer = 0f;
-		public static int EnemySpinnerSpawnNumber = 1; // How many spawn each time
-		public static float EnemyRollerSpawnRate = 10f; // Spawns every x seconds
+		public static int EnemySpinnerSpawnNumber = 2; // How many spawn each time
+		public static float EnemyRollerSpawnRate = 2f; // Spawns every x seconds
 		public static float EnemyRollerSpawnTimer = 0f;
-		public static int EnemyRollerSpawnNumber = 5; // How many spawn each time
+		public static int EnemyRollerSpawnNumber = 1; // How many spawn each time
+
+        public static bool clearAllEnemiesFlag = false;
 
 		public static void SpawnEnemySpinner(int yAxisEntry, int numberEnemies)
         {
@@ -157,9 +159,18 @@ namespace SideScrollShooter._Managers
 				EnemyRollerSpawnTimer = 0;
 			}
 
+
+			if (clearAllEnemiesFlag)
+			{
+				allEnemies.Clear();
+				clearAllEnemiesFlag = false;
+			}
+
+
+
 		}
 
-        public static void Draw()
+		public static void Draw()
         {
             foreach (var swarm in allEnemies)
             {
@@ -167,6 +178,11 @@ namespace SideScrollShooter._Managers
                     enemy.Draw();
 
             }
+        }
+
+        public static void ClearAllEnemies()
+        {
+            clearAllEnemiesFlag = true;
         }
     }
 }

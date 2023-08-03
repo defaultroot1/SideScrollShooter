@@ -1,4 +1,5 @@
-﻿using SideScrollShooter._Models._Base;
+﻿using SideScrollShooter._Managers;
+using SideScrollShooter._Models._Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace SideScrollShooter._Models.Enemies
 			float angle = (float)Math.Atan2(toPlayer.Y, toPlayer.X);
 
 			Rotation = angle + MathF.PI;
+
 		}
 	}
 }

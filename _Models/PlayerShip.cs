@@ -104,5 +104,10 @@ namespace SideScrollShooter._Models
             _speed += amount;
         }
 
+        public void DestroyShip()
+        {
+            FXManager.SpawnSmokeyExplosion(new Vector2(Position.X + Width / 2, Position.Y + Height / 2));
+        }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using SideScrollShooter._Models._Base;
+﻿using SideScrollShooter._Managers;
+using SideScrollShooter._Models._Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,14 @@ namespace SideScrollShooter._Models.Enemies
 
 
 			base.Update();
+
+			Random rand = new Random();
+			if (rand.Next(1, 1000) > 990)
+			{
+				ProjectileManager.enemyProjectiles.Add(new Projectile(Globals.ContentManger.Load<Texture2D>("Sprites/enemyShot"),
+				new Vector2(Position.X + Width / 2, Position.Y + Height / 2),
+				new Vector2(-1, 0), 1000f, 1));
+			}
 
 		}
 	}
